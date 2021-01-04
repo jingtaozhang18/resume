@@ -38,6 +38,7 @@
 
 *.dvi
 *.ps
+tstex_modules/
 
 ############################################
 # do not upload secret infomation

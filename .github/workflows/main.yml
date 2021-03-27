@@ -31,8 +31,7 @@ jobs:
       - name: build my resume
         run: |
           make
-          cp resume-zh_CN.pdf resume.pdf
       - name: upload to my server
-        run: printf "%s" "${{ secrets.DEPLOY_KEY }}" > ${SSH_PRIVATE} && chmod 600 ${SSH_PRIVATE} && rsync -avzW resume.pdf ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }}:/data/hexo --rsh "ssh -p ${{ secrets.DEPLOY_PORT }} -i ${SSH_PRIVATE} -o StrictHostKeyChecking=no"
+        run: printf "%s" "${{ secrets.DEPLOY_KEY }}" > ${SSH_PRIVATE} && chmod 600 ${SSH_PRIVATE} && rsync -avzW resume.pdf resume_en.pdf ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }}:/data/hexo --rsh "ssh -p ${{ secrets.DEPLOY_PORT }} -i ${SSH_PRIVATE} -o StrictHostKeyChecking=no"
         env:
           SSH_PRIVATE: ../id_rsa.pem
